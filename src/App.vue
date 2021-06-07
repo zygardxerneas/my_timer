@@ -5,13 +5,13 @@
         <div id="onShow" class="onShow">
           <div id="groupNum" style="display: inline">{{groupNum[groupNumIndex]}}</div>
           <div style="display: inline">
-            团支部<div v-if="ppart==0" style="display: inline">展示</div><div v-else-if="ppart==1" style="display: inline">问答</div>环节
+            同学<div v-if="ppart==0" style="display: inline">展示</div><div v-else-if="ppart==1" style="display: inline">问答</div>环节
           </div>
         </div>
-        <div id="readyShow" class="readyShow" v-if="groupNumIndex<groupNum.length-1">
+        <div id="readyShow" class="readyShow" :style="groupNumIndex<groupNum.length-1 ? '' : 'visibility:hidden'">
           <div style="display: inline">请</div>
-          <div id="readyGroupNum" style="display: inline">{{groupNum[groupNumIndex+1]}}</div>
-          <div style="display: inline">团支部做好准备</div>
+          <div id="readyGroupNum" style="display: inline" v-if="groupNumIndex<groupNum.length-1">{{groupNum[groupNumIndex+1]}}</div>
+          <div style="display: inline">同学做好准备</div>
         </div>
         <div id="question" class="question" style="display:none"><br/><br/><br/><br/></div>
         <div id="clock"  class="page-title-time" >{{this.sm + ":" + this.ss}}</div>
@@ -48,7 +48,7 @@ export default {
     name: 'App',
     data(){
       return {
-          groupNum: ['040156','026161','031156','051156','144152','081161','015151'],
+          groupNum: ['叶炳辰', '林继康', '张泽宇', '胡世杰', '林秀茹', '佘万龙', '周子易', '梅洛瑜', '周智圆', '徐志鹏'],
           groupNumIndex: 0,
           ppart: 0, //0展示环节，1问答环节
           normalelapse: 100,
@@ -206,7 +206,7 @@ export default {
   margin-top: 60px;
 }
 .page-title-time {
-  margin-top: 10%;
+  margin-top: 7%;
   position: relative;
   width:80%;
   margin-left: auto;
